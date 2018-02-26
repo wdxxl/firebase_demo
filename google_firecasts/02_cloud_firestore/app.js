@@ -15,6 +15,7 @@
   const outputHeader = document.querySelector("#hotDogOutput");
   const inputTextField = document.querySelector("#latestHotDogStatus");
   const saveButton = document.querySelector("#saveButton");
+  const loadButton = document.querySelector("#loadButton");
 
   saveButton.addEventListener("click", function(){
     const textToSave = inputTextField.value;
@@ -26,4 +27,15 @@
     }).catch(function (error){
       console.log("Got an error: "+ error);
     });
-  })
+  });
+
+  loadButton.addEventListener("click", function(){
+    docRef.get().then(function (doc){
+      if(doc && doc.exists){
+        const myData = doc.data();
+        outputHeader.innerText = "Hot dog status: "+ myData.hotDogStatus;
+      }
+    }).catch(function (error){
+      console.log("Got an error: "+ error);
+    });
+  });
