@@ -39,3 +39,15 @@
       console.log("Got an error: "+ error);
     });
   });
+
+    getRealtimeUpdates = function(){
+      // docRef.onSnapshot({includeMetadataChanges:true}, function (doc){
+      docRef.onSnapshot(function (doc){
+        if(doc && doc.exists){
+          const myData = doc.data();
+          console.log("Check out this document I received", doc);
+          outputHeader.innerText = "Hot dog RealTime status: "+ myData.hotDogStatus;
+        }
+      });
+    }
+    getRealtimeUpdates();
