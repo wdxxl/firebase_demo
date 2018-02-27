@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Easy Auth</title>
+  </head>
+<!-- Below is the initialization snippet for my Firebase project. It will vary for each project -->
+  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAsTByjf5v_ae7Q1kZQROOSbLun0GMFvxE",
+      authDomain: "fir-authuiscreencast-ebc36.firebaseapp.com",
+      databaseURL: "https://fir-authuiscreencast-ebc36.firebaseio.com",
+      projectId: "fir-authuiscreencast-ebc36",
+      storageBucket: "fir-authuiscreencast-ebc36.appspot.com",
+      messagingSenderId: "1064372189372"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+<!-- The code below Initializes the sign-in widget from FirebaseUI web.  -->
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.6.1/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.1/firebaseui.css" />
+  <script type="text/javascript">
+    // FirebaseUI config.
+    var uiConfig = {
+      signInSuccessUrl: 'loggedIn.html',
+      signInOptions: [
+        firebase.auth.PhoneAuthProvider.PROVIDER_ID
+      ],
+      // Terms of service url.
+      tosUrl: '<your-tos-url>'
+    };
+
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    // The start method will wait until the DOM is loaded.
+    ui.start('#firebaseui-auth-container', uiConfig);
+  </script>
+<!-- Include a simple background image & title -->
+  <body>
+    <h1 align="center" style="color:green;">Firebase Auth Quickstart Demo</h1>
+    <div id="firebaseui-auth-container"></div>
+  </body>
+</html>
