@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Easy Auth</title>
+  </head>
+<!-- Below is the initialization snippet for my Firebase project. It will vary for each project -->
+  <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAsTByjf5v_ae7Q1kZQROOSbLun0GMFvxE",
+      authDomain: "fir-authuiscreencast-ebc36.firebaseapp.com",
+      databaseURL: "https://fir-authuiscreencast-ebc36.firebaseio.com",
+      projectId: "fir-authuiscreencast-ebc36",
+      storageBucket: "fir-authuiscreencast-ebc36.appspot.com",
+      messagingSenderId: "1064372189372"
+    };
+    firebase.initializeApp(config);
+  </script>
+<!-- A simple example script to add text to the page that displays the user's Display name & email -->
+  <script>
+    firebase.auth().onAuthStateChanged(function(user){
+      if(user){
+        document.body.innerHTML = "<h1> Congrats " + user.displayName + ", you are done!" +  user.email + "</h1>"; 
+      }else{
+        console.log('no user signed in');
+      }
+    });
+  </script>
+  <body>
+    <h1>Congrats you're done! Now get back to what you love building.</h1>
+  </body>
+</html>
